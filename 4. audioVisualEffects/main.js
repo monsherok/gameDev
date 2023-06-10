@@ -46,7 +46,9 @@ window.addEventListener('click', createAnimation)
 function createAnimation(e) {
     let positionX = e.x - canvasPosition.left;
     let positionY = e.y - canvasPosition.top;
-    explosions.push(new Explosion(positionX, positionY))
+    if (e.target === canvas) {
+        explosions.push(new Explosion(positionX, positionY))
+    }
 }
 
 function animate() {
