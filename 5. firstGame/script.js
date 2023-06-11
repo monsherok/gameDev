@@ -110,6 +110,18 @@ function showGameOver() {
     ctx.fillText('Game over! Your Score: ' + score, canvas.width / 2 + 5, canvas.height / 2 + 5);
 }
 
+function startGame() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    collisionCtx.clearRect(0, 0, canvas.width, canvas.height);
+
+    ravens = [];
+    explosions = [];
+    score = 0;
+    timeToNexRaven = 0;
+    gameOver = false;
+    animate(0);
+}
+
 function drawScore() {
     ctx.fillStyle = 'black';
     ctx.fillText('Score: ' + score, 50, 75);
@@ -128,6 +140,8 @@ window.addEventListener('click', function (e) {
         }
     })
 });
+
+addEventListener('click', () => gameOver && startGame());
 
 function animate(timestamp) {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
